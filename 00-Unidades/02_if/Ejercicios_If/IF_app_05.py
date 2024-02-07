@@ -37,7 +37,7 @@ class App(customtkinter.CTk):
         minimo = 13
         maximo = 17
 
-        if edad > 17 and edad < 13:
+        if (edad > maximo) or (edad < minimo):
             alert("", "NO ES ADOLESCENTE")
     
 if __name__ == "__main__":
