@@ -35,7 +35,9 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        edad = int(self.txt_edad.get())
+        edad = self.txt_edad.get()
+        edad = int(edad)
+        
         mayor = 18
         adolescente = 17
         pre_adolescente = 13
