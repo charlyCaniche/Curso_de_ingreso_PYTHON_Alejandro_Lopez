@@ -7,8 +7,8 @@ import customtkinter
 
 '''
 
-nombre:
-apellido:
+nombre: Alejandro Daniel
+apellido: López Pino
 ---
 Ejercicio: Match_01
 ---

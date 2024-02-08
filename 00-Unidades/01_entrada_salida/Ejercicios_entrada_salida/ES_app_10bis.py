@@ -42,8 +42,8 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         importe = float(self.txt_importe.get())
-        descuentop = float(self.txt_descuento.get())
-        importe_actualizado = imp - (desc * imp / 100)
+        descuento = float(self.txt_descuento.get())
+        importe_actualizado = importe - (descuento * importe / 100)
         alert(title="Descuento", message=f"El importe {importe} después de aplicarle un descuento de {descuento} es {importe_actualizado}")
 
 if __name__ == "__main__":
