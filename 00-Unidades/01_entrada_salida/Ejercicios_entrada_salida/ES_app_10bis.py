@@ -41,11 +41,10 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        imp = float(self.txt_importe.get())
-        desc = float(self.txt_descuento.get())
-        actualizado = imp - (desc * imp / 100)
-        alert(title="Descuento", message=f"El importe {imp} después de aplicarle un descuento de {desc} es {actualizado}")
-
+        importe = float(self.txt_importe.get())
+        descuentop = float(self.txt_descuento.get())
+        importe_actualizado = imp - (desc * imp / 100)
+        alert(title="Descuento", message=f"El importe {importe} después de aplicarle un descuento de {descuento} es {importe_actualizado}")
 
 if __name__ == "__main__":
     app = App()

@@ -35,7 +35,7 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         importe = int(self.txt_importe.get())
-        actualizado = importe - (importe * 0.20)
+        importe_actualizado = importe - (importe * 0.20)
         alert(title="EJ_10", message=f"El importe actualizado con un descuento de 20% es {actualizado}")
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@ class App(customtkinter.CTk):
         
         self.title("UTN FRA")
 
-        self.label_1 = customtkinter.CTkLabel(master=self, text=f"Toneladas (en kg)")
+        self.label_1 = customtkinter.CTkLabel(master=self, text=f"Toneladas (en kg)") #aclare que el dato se coloque en kg
         self.label_1.grid(row=0, column=0, padx=20, pady=10)
         
         self.txt_toneladas = customtkinter.CTkEntry(master=self)

@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Alejandro Daniel
+apellido: López Pino
 ---
 TP: IF_Iluminacion
 ---
@@ -43,10 +43,52 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        lampara = 800
+        cantidad = self.combobox_cantidad.get()
+        marca = self.combobox_marca.get()
+        cantidad_numero = int(cantidad)        
+        texto = f"La cantidad de lamparitas es {cantidad_numero} de la marca {marca}"
+
+        if cantidad_numero > 5: #A
+            descuento = 50
+
+        elif cantidad_numero == 5: #B
+            if marca == 'ArgentinaLuz':
+               descuento = 40
+            else:
+                descuento = 30
+
+        elif cantidad_numero == 4: #C
+            if marca == 'ArgentinaLuz' or marca == 'FelipeLamparas':
+                descuento = 25
+            else:
+                descuento = 20
+
+        elif cantidad_numero == 3: #D
+            if marca == 'ArgentinaLuz':
+                descuento = 15
+            elif marca == 'FelipeLamparas':
+                descuento = 10
+            else:
+                descuento = 5
+
+        precio = lampara * cantidad_numero
+        precio_y_descuento = precio * (descuento / 100)
+        precio_con_descuento_aplicado = precio - precio_y_descuento
+        precio_y_descuento_extra = 0
         
-    
+        if precio_con_descuento_aplicado > 4000:
+                precio_y_descuento_extra = precio_con_descuento_aplicado * (5 / 100)
+        
+        total = precio_con_descuento_aplicado - precio_y_descuento_extra
+        
+
+
+
+        mensaje = f"Se compraron en total {cantidad} de lamparitas marca {marca}, por ende, se aplica un descuento del {descuento}%, dando un total de {total}, "
+        alert('', mensaje)
+
 if __name__ == "__main__":
-    app = App()
+    app = App()                  
     app.geometry("300x300")
     app.mainloop()
