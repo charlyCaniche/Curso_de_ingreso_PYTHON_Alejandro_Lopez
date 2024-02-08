@@ -48,14 +48,16 @@ class App(customtkinter.CTk):
         pivot = 200
 
         if altura >= pivot:
-            alert('', 'Pivot')
+            mensaje = 'Pívot'
         elif altura > escolta and altura < pivot:
-            alert('Posición básquet', 'Alero')
+            mensaje = 'Alero'
         elif altura >= base and altura <= escolta:
-            alert('Posición básquet', 'Escolta')
+            mensaje = 'Escolta'
         else:
-            alert('Posición básquet', 'Base')
-    
+            mensaje = 'Base'
+
+        alert('Posición básquet', mensaje)
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
