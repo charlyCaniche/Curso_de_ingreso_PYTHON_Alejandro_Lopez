@@ -47,8 +47,7 @@ class App(customtkinter.CTk):
         cantidad = self.combobox_cantidad.get()
         marca = self.combobox_marca.get()
         cantidad_numero = int(cantidad)        
-        texto = f"La cantidad de lamparitas es {cantidad_numero} de la marca {marca}"
-
+        
         if cantidad_numero > 5: #A
             descuento = 50
 

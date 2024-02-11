@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Alejandro Daniel
+apellido: López Pino
 ---
 TP: Iluminación
 ---
@@ -16,7 +16,7 @@ Todas las lámparas están  al mismo precio de $800 pesos final.
 		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
 		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
 		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
-		E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
+		E.	Si el importe final con descuento suma más de $4000  se obtiene un descuento adicional de 5%.
 '''
 
 class App(customtkinter.CTk):
@@ -43,8 +43,50 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        lampara = 800
+        cantidad = self.combobox_cantidad.get()
+        cantidad_int = int(cantidad)
+        marca = self.combobox_marca.get()
+
+        match cantidad_int:
+            case 6 | 7 | 8 | 9 | 10 | 11:
+                descuento = 50
+            case 5:
+                match marca:
+                    case 'ArgentinaLuz':
+                        descuento = 40
+                    case 'FelipeLamparas' | 'JeLuz' | 'HazIluminacion' | 'Osram':
+                        descuento = 30
+            case 4:
+                match marca:
+                    case 'ArgentinaLuz' | 'FelipeLamparas':
+                        descuento = 25
+                    case 'JeLuz' | 'Osram':
+                        descuento = 20
+            case 3:
+                match marca:
+                    case 'ArgentinaLuz':
+                        descuento = 15
+                    case 'FelipeLamparas':
+                        descuento = 10
+                    case 'JeLuz' | 'Osram':
+                        descuento = 5
+            case _:
+                descuento = 0
         
+        precio = lampara * cantidad_int
+        descuento_con_precio = precio * (descuento / 100)
+        precio_con_descuento_aplicado = precio - descuento_con_precio
+        precio_con_descuento_adicional = 0
+
+        match precio_con_descuento_aplicado:
+            case x if precio_con_descuento_aplicado > 3999:
+                precio_con_descuento_adicional = precio_con_descuento_aplicado * 0.05
+        
+        total = precio_con_descuento_aplicado - precio_con_descuento_adicional
+
+        mensaje = f'Se compraron un total de {cantidad_int} lamparitas, con un descuento del {descuento}%, dando un total de {total}'
+        alert('', mensaje)
     
 if __name__ == "__main__":
     app = App()
