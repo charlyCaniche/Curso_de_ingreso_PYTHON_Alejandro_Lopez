@@ -57,9 +57,39 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
-            
-    
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+        tarifa_base = 15000
+
+        match estacion:
+            case 'Invierno':
+                match destino:
+                    case 'Bariloche':
+                        importe = 120
+                    case 'Cataratas' | 'Cordoba':
+                        importe = 90
+                    case 'Mar del plata':
+                        importe = 80
+            case 'Verano': 
+                match destino:
+                    case 'Bariloche':
+                        importe = 80
+                    case 'Cataratas' | 'Cordoba':
+                        importe = 110
+                    case 'Mar del plata':
+                        importe = 120
+            case 'Otoño' | 'Primavera':
+                match destino:
+                    case 'Bariloche' | 'Cataratas' | 'Mar del plata':
+                        importe = 110
+                    case 'Cordoba':
+                        importe = 0
+
+        tarifa_final = tarifa_base * (importe/100)
+
+        mensaje = f'El precio de la tarifa base es de {tarifa_base}, sin embargo posterior a aumentos/descuentos el precio final es de {tarifa_final}'
+        alert('Viajes', mensaje)
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
